@@ -6,29 +6,45 @@
 </script>
 
 <script>
+  import {
+    deleteCategory,
+    getCategories,
+    insertCategory,
+    updateCategory,
+  } from '../api';
+
   export let categories = [];
 
-  const del = async (id) => {
-    await fetch(`api/categories/${id}`, { method: 'delete' });
-    await refresh();
+  $: isAdding = categories.some((c) => !c.id);
+
+  const del = async (category) => {
+    if (category.id) {
+      await deleteCategory(category.id);
+      await refresh();
+    } else {
+      categories = categories.filter((c) => c !== category);
+    }
   };
 
   const refresh = async () => {
-    categories = await (await fetch('api/categories')).json();
+    categories = await getCategories();
   };
 
   const captureEnterKey = async (e, category) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      await fetch(`api/categories/${category.id}`, {
-        method: 'put',
-        body: JSON.stringify(category),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      if (category.id) {
+        await updateCategory(category);
+      } else {
+        await insertCategory(category);
+      }
       e.target.blur();
     }
+  };
+
+  const addRow = () => {
+    categories = [{ id: null, name: null }, ...categories];
+    document.getElementsByTagName('td')[0].focus();
   };
 </script>
 
@@ -36,6 +52,9 @@
   <title>Kategorien | Satzwürfel</title>
 </svelte:head>
 <h1 class="title">Kategorien</h1>
+<button class="button is-primary" disabled="{isAdding}" on:click="{addRow}">
+  Erstellen
+</button>
 <table class="table">
   <thead>
     <tr>
@@ -47,11 +66,14 @@
     {#each categories as category}
       <tr>
         <td
+          style="vertical-align: middle"
           contenteditable="true"
           on:keydown="{(e) => captureEnterKey(e, category)}"
           bind:innerHTML="{category.name}"></td>
         <td>
-          <a on:click="{() => del(category.id)}">Löschen</a>
+          <button class="button is-text" on:click="{() => del(category)}">
+            {category.id ? 'Löschen' : 'Abbrechen'}
+          </button>
         </td>
       </tr>
     {/each}
