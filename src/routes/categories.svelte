@@ -30,14 +30,16 @@
     categories = await getCategories();
   };
 
+  const save = async (category) => {
+    if (category.id) {
+      await updateCategory(category);
+    } else {
+      await insertCategory(category);
+    }
+  };
+
   const captureEnterKey = async (e, category) => {
     if (e.key === 'Enter') {
-      e.preventDefault();
-      if (category.id) {
-        await updateCategory(category);
-      } else {
-        await insertCategory(category);
-      }
       e.target.blur();
     }
   };
@@ -55,27 +57,40 @@
 <button class="button is-primary" disabled="{isAdding}" on:click="{addRow}">
   Erstellen
 </button>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Aktionen</th>
-    </tr>
-  </thead>
-  <tbody>
-    {#each categories as category}
+<div class="table-container">
+  <table class="table is-fullwidth" style="table-layout: fixed;">
+    <thead>
       <tr>
-        <td
-          style="vertical-align: middle"
-          contenteditable="true"
-          on:keydown="{(e) => captureEnterKey(e, category)}"
-          bind:innerHTML="{category.name}"></td>
-        <td>
-          <button class="button is-text" on:click="{() => del(category)}">
-            {category.id ? 'Löschen' : 'Abbrechen'}
-          </button>
-        </td>
+        <th style="width: 50%">Name</th>
+        <th style="width: 50%">Aktionen</th>
       </tr>
-    {/each}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {#each categories as category}
+        <tr>
+          <td
+            class="is-wrapped"
+            style="vertical-align: middle;"
+            contenteditable="false"
+            on:click="{(e) => {
+              e.target.contentEditable = true;
+              e.target.focus();
+            }}"
+            on:keydown="{(e) => captureEnterKey(e, category)}"
+            on:blur="{(e) => {
+              e.target.contentEditable = false;
+              save(category);
+            }}"
+            bind:innerHTML="{category.name}"></td>
+          <td>
+            <button
+              class="button is-text is-danger"
+              on:click="{() => del(category)}">
+              {category.id ? 'Löschen' : 'Abbrechen'}
+            </button>
+          </td>
+        </tr>
+      {/each}
+    </tbody>
+  </table>
+</div>
