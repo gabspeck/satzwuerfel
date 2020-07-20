@@ -1,5 +1,5 @@
 export async function insertCategory(category) {
-  return await fetch(`api/categories`, {
+  return await fetch('api/categories', {
     method: 'post',
     body: JSON.stringify(category),
     headers: {

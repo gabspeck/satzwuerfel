@@ -13,9 +13,9 @@
     updateCategory,
   } from '../api';
 
-  export let categories = [];
+  import { _ } from 'lodash';
 
-  $: isAdding = categories.some((c) => !c.id);
+  export let categories = [];
 
   const del = async (category) => {
     if (category.id) {
@@ -30,23 +30,16 @@
     categories = await getCategories();
   };
 
-  const save = async (category) => {
+  const save = _.debounce(async (category) => {
     if (category.id) {
       await updateCategory(category);
     } else {
       await insertCategory(category);
     }
-  };
-
-  const captureEnterKey = async (e, category) => {
-    if (e.key === 'Enter') {
-      e.target.blur();
-    }
-  };
+  }, 300);
 
   const addRow = () => {
     categories = [{ id: null, name: null }, ...categories];
-    document.getElementsByTagName('td')[0].focus();
   };
 </script>
 
@@ -54,9 +47,7 @@
   <title>Kategorien | Satzwürfel</title>
 </svelte:head>
 <h1 class="title">Kategorien</h1>
-<button class="button is-primary" disabled="{isAdding}" on:click="{addRow}">
-  Erstellen
-</button>
+<button class="button is-primary" on:click="{addRow}">Erstellen</button>
 <div class="table-container">
   <table class="table is-fullwidth" style="table-layout: fixed;">
     <thead>
@@ -68,20 +59,13 @@
     <tbody>
       {#each categories as category}
         <tr>
-          <td
-            class="is-wrapped"
-            style="vertical-align: middle;"
-            contenteditable="false"
-            on:click="{(e) => {
-              e.target.contentEditable = true;
-              e.target.focus();
-            }}"
-            on:keydown="{(e) => captureEnterKey(e, category)}"
-            on:blur="{(e) => {
-              e.target.contentEditable = false;
-              save(category);
-            }}"
-            bind:innerHTML="{category.name}"></td>
+          <td class="is-wrapped">
+            <input
+              class="input"
+              style="border: none; box-shadow: none"
+              on:input="{save(category)}"
+              bind:value="{category.name}" />
+          </td>
           <td>
             <button
               class="button is-text is-danger"
