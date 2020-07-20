@@ -34,7 +34,7 @@
     if (category.id) {
       await updateCategory(category);
     } else {
-      await insertCategory(category);
+      category.id = await (await insertCategory(category)).json();
     }
   }, 300);
 
@@ -67,10 +67,8 @@
               bind:value="{category.name}" />
           </td>
           <td>
-            <button
-              class="button is-text is-danger"
-              on:click="{() => del(category)}">
-              {category.id ? 'Löschen' : 'Abbrechen'}
+            <button class="button is-danger" on:click="{() => del(category)}">
+              Löschen
             </button>
           </td>
         </tr>

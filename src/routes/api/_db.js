@@ -15,4 +15,4 @@ export let categories = [
     id: '0393a4ee-8845-4128-ad18-f897863d8e64',
     name: 'Arbeit',
   },
-].sort((a, b) => a.name.localeCompare(b.name));
+];
