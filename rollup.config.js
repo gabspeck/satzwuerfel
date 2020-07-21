@@ -9,8 +9,10 @@ import pkg from './package.json';
 import css from 'rollup-plugin-css-only';
 import copy from 'rollup-plugin-copy';
 
+// eslint-disable-next-line no-undef
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
+// eslint-disable-next-line no-undef
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const onwarn = (warning, onwarn) =>
@@ -100,7 +102,9 @@ export default {
       commonjs(),
     ],
     external: Object.keys(pkg.dependencies).concat(
+      // eslint-disable-next-line no-undef
       require('module').builtinModules ||
+        // eslint-disable-next-line no-undef
         Object.keys(process.binding('natives'))
     ),
 
