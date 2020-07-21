@@ -26,9 +26,17 @@
     }
   };
 
+  let sortOrder = 'asc';
+
+  const toggleSort = () => {
+    sortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+  };
+
   const refresh = async () => {
     categories = await getCategories();
   };
+
+  $: categories = _.orderBy(categories, ['name'], sortOrder);
 
   const save = _.debounce(async (category) => {
     if (category.id) {
@@ -52,7 +60,17 @@
   <table class="table is-fullwidth" style="table-layout: fixed;">
     <thead>
       <tr>
-        <th style="width: 50%">Name</th>
+        <th style="width: 50%">
+          Name
+          <button class="button is-small" on:click="{toggleSort}">
+            <span class="icon">
+              <i
+                class="fas"
+                class:fa-sort-alpha-down="{sortOrder === 'asc'}"
+                class:fa-sort-alpha-up="{sortOrder === 'desc'}"></i>
+            </span>
+          </button>
+        </th>
         <th style="width: 50%">Aktionen</th>
       </tr>
     </thead>

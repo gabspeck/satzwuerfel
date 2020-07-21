@@ -7,6 +7,7 @@ import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 import css from 'rollup-plugin-css-only';
+import copy from 'rollup-plugin-copy';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -22,6 +23,14 @@ export default {
     input: config.client.input(),
     output: config.client.output(),
     plugins: [
+      copy({
+        targets: [
+          {
+            src: 'node_modules/@fortawesome/fontawesome-free/webfonts/*',
+            dest: 'static/webfonts',
+          },
+        ],
+      }),
       css({ output: 'static/build/vendor.css' }),
       replace({
         'process.browser': true,
