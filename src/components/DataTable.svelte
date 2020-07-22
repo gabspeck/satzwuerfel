@@ -89,12 +89,19 @@
         {#each items as item}
           <tr>
             {#each fields as field}
-              <td class="is-wrapped">
-                <input
-                  class="input"
-                  style="border: none; box-shadow: none"
-                  on:input="{() => save(item)}"
-                  bind:value="{item[field.name]}" />
+              <td>
+                {#if field.rendering && field.rendering.component}
+                  <svelte:component
+                    this="{field.rendering.component}"
+                    value="{item[field.name]}"
+                    {...field.rendering.props} />
+                {:else}
+                  <input
+                    class="input"
+                    style="border: none; box-shadow: none"
+                    on:input="{() => save(item)}"
+                    bind:value="{item[field.name]}" />
+                {/if}
               </td>
             {/each}
             <td>
