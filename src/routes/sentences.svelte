@@ -1,7 +1,12 @@
 <script>
   import DataTable from '../components/DataTable.svelte';
   import TagList from '../components/TagList.svelte';
-  import { getSentences } from '../api';
+  import {
+    insertSentence,
+    getSentences,
+    updateSentence,
+    deleteSentence,
+  } from '../api';
 
   let fields = [
     {
@@ -13,13 +18,18 @@
       label: 'Kategorien',
       rendering: {
         component: TagList,
-        props: {
-          allCaps: true,
-        },
       },
     },
   ];
 </script>
 
+<svelte:head>
+  <title>Sätze</title>
+</svelte:head>
 <h1 class="title">Sätze</h1>
-<DataTable {fields} get="{getSentences}" />
+<DataTable
+  {fields}
+  get="{getSentences}"
+  insert="{insertSentence}"
+  update="{updateSentence}"
+  del="{deleteSentence}" />

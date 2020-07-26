@@ -22,7 +22,6 @@
   </div>
   <div class="navbar-menu" class:is-active="{menuActive}" id="navMenu">
     <div class="navbar-start">
-      <a class="navbar-item" href="/categories">Kategorien</a>
       <a class="navbar-item" href="/sentences">Sätze</a>
       <a class="navbar-item" href="/draw">Würfel</a>
     </div>

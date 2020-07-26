@@ -799,6 +799,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@creativebulma/bulma-tagsinput@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@creativebulma/bulma-tagsinput/-/bulma-tagsinput-1.0.2.tgz#62411a9afc57809eff25d59eef25f22e3b31c36f"
+  integrity sha512-Cahgrmvne4MGx5X7G1jJm+lPif8cTbwmpBlXGM0tcZ30lJY9kc3hkXj6dTSOZ8I8nFyTOpbqTYcFeJbGXUzRNg==
+
 "@fortawesome/fontawesome-free@^5.14.0":
   version "5.14.0"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.14.0.tgz#a371e91029ebf265015e64f81bfbf7d228c9681f"

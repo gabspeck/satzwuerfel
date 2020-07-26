@@ -21,7 +21,7 @@ export function put(req, res) {
   }
   sentences[idx] = {
     id: id,
-    name: req.body.name,
+    text: req.body.text,
     categories: req.body.categories,
   };
   res.statusCode = 204;

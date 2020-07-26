@@ -1,12 +1,13 @@
 <script>
   import { _ } from 'lodash';
   import { onMount } from 'svelte';
+  import DataTableInput from './DataTableInput.svelte';
 
   export let get = async () => [];
   export let del = async () => {};
   export let update = async () => {};
   export let insert = async () => {};
-  export let rowTemplate = { id: null, name: null };
+  let newRow = {};
   export let fields = [
     {
       name: 'name',
@@ -31,7 +32,6 @@
   };
 
   const deleteRow = async (item) => {
-    console.log(item);
     if (item.id) {
       await del(item.id);
       await refresh();
@@ -48,8 +48,10 @@
     }
   }, 300);
 
-  const addRow = () => {
-    items = [Object.assign(rowTemplate), ...items];
+  const addRow = async () => {
+    newRow.id = await insert(newRow);
+    items = [...items, Object.assign({}, newRow)];
+    newRow = {};
   };
 
   onMount(async () => {
@@ -57,7 +59,52 @@
   });
 </script>
 
-<button class="button is-primary" on:click="{addRow}">Erstellen</button>
+<div class="field is-horizontal">
+  <div class="field-body">
+    {#each fields as field}
+      <div class="field">
+        <p class="control is-expanded">
+          <DataTableInput item="{newRow}" {field} />
+        </p>
+      </div>
+    {/each}
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary" on:click="{addRow}">
+            Hinzufügen
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label">
+    <!-- Left empty for spacing -->
+  </div>
+
+</div>
+<!--<div class="field is-horizontal">-->
+<!--  {#each fields as field}-->
+<!--    <div class="field">-->
+<!--      <div class="field-body">-->
+<!--        <div class="field">-->
+<!--          <p class="control is-expanded">-->
+<!--            <input-->
+<!--              class="input"-->
+<!--              placeholder="{field.label || field.name}"-->
+<!--              bind:value="{newRow[field.name]}" />-->
+<!--          </p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  {/each}-->
+<!--  <p class="control">-->
+<!--    <button class="button is-primary" on:click="{addRow}">Hinzufügen</button>-->
+<!--  </p>-->
+<!--</div>-->
 <div class="table-container">
   <table class="table is-fullwidth" style="table-layout: fixed;">
     <thead>
@@ -90,18 +137,7 @@
           <tr>
             {#each fields as field}
               <td>
-                {#if field.rendering && field.rendering.component}
-                  <svelte:component
-                    this="{field.rendering.component}"
-                    value="{item[field.name]}"
-                    {...field.rendering.props} />
-                {:else}
-                  <input
-                    class="input"
-                    style="border: none; box-shadow: none"
-                    on:input="{() => save(item)}"
-                    bind:value="{item[field.name]}" />
-                {/if}
+                <DataTableInput onInput="{() => save(item)}" {item} {field} />
               </td>
             {/each}
             <td>
