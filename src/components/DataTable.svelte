@@ -49,7 +49,7 @@
   }, 300);
 
   const addRow = async () => {
-    newRow.id = await insert(newRow);
+    newRow.id = await (await insert(newRow)).json();
     items = [...items, Object.assign({}, newRow)];
     newRow = {};
   };

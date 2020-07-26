@@ -11,7 +11,7 @@ export function post(req, res) {
   const id = uuid.v4();
   sentences.push({
     id: id,
-    name: body.name,
+    text: body.text,
     categories: body.categories,
   });
   res.statusCode = 201;
