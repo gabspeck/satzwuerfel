@@ -8,14 +8,24 @@
 
   const dispatch = createEventDispatcher();
   let element;
+  let tagInput;
 
   const onInput = (v) => {
     value = v;
     dispatch('input', v);
   };
 
+  $: {
+    if (tagInput) {
+      tagInput.flush();
+      if (value) {
+        tagInput.add(value);
+      }
+    }
+  }
+
   onMount(() => {
-    let tagInput = new BulmaTagsInput(element, {
+    tagInput = new BulmaTagsInput(element, {
       selectable: false,
       placeholder,
     });

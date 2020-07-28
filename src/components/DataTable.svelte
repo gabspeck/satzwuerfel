@@ -50,7 +50,7 @@
 
   const addRow = async () => {
     newRow.id = await (await insert(newRow)).json();
-    items = [...items, Object.assign({}, newRow)];
+    items = [Object.assign({}, newRow), ...items];
     newRow = {};
   };
 
