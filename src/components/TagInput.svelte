@@ -3,7 +3,8 @@
   import BulmaTagsInput from '@creativebulma/bulma-tagsinput';
   import { createEventDispatcher, onMount } from 'svelte';
 
-  export let value = '';
+  export let value = null;
+  export let placeholder = null;
 
   const dispatch = createEventDispatcher();
   let element;
@@ -14,7 +15,10 @@
   };
 
   onMount(() => {
-    let tagInput = new BulmaTagsInput(element, { selectable: false });
+    let tagInput = new BulmaTagsInput(element, {
+      selectable: false,
+      placeholder,
+    });
     ['after.add', 'after.remove'].forEach((i) => {
       tagInput.on(i, () => onInput(tagInput.value));
     });

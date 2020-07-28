@@ -50,7 +50,7 @@
 
   const addRow = async () => {
     newRow.id = await (await insert(newRow)).json();
-    items = [...items, Object.assign({}, newRow)];
+    items = [Object.assign({}, newRow), ...items];
     newRow = {};
   };
 
@@ -59,16 +59,16 @@
   });
 </script>
 
-<div class="field is-horizontal">
+<div class="field is-horizontal is-fullwidth columns">
   <div class="field-body">
     {#each fields as field}
-      <div class="field">
+      <div class="field column">
         <p class="control is-expanded">
           <DataTableInput item="{newRow}" {field} />
         </p>
       </div>
     {/each}
-    <div class="field-body">
+    <div class="field-body column">
       <div class="field">
         <div class="control">
           <button class="button is-primary" on:click="{addRow}">
@@ -80,31 +80,6 @@
   </div>
 </div>
 
-<div class="field is-horizontal">
-  <div class="field-label">
-    <!-- Left empty for spacing -->
-  </div>
-
-</div>
-<!--<div class="field is-horizontal">-->
-<!--  {#each fields as field}-->
-<!--    <div class="field">-->
-<!--      <div class="field-body">-->
-<!--        <div class="field">-->
-<!--          <p class="control is-expanded">-->
-<!--            <input-->
-<!--              class="input"-->
-<!--              placeholder="{field.label || field.name}"-->
-<!--              bind:value="{newRow[field.name]}" />-->
-<!--          </p>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  {/each}-->
-<!--  <p class="control">-->
-<!--    <button class="button is-primary" on:click="{addRow}">Hinzufügen</button>-->
-<!--  </p>-->
-<!--</div>-->
 <div class="table-container">
   <table class="table is-fullwidth" style="table-layout: fixed;">
     <thead>

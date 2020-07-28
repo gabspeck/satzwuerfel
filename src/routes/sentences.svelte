@@ -1,6 +1,6 @@
 <script>
   import DataTable from '../components/DataTable.svelte';
-  import TagList from '../components/TagList.svelte';
+  import TagInput from '../components/TagInput.svelte';
   import {
     insertSentence,
     getSentences,
@@ -17,7 +17,7 @@
       name: 'categories',
       label: 'Kategorien',
       rendering: {
-        component: TagList,
+        component: TagInput,
       },
     },
   ];
