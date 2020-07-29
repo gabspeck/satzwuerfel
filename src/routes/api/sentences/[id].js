@@ -14,10 +14,9 @@ export function del(req, res) {
 
 export function put(req, res) {
   const { id } = req.params;
-  const idx = sentences.findIndex((c) => c.id === id);
+  let idx = sentences.findIndex((c) => c.id === id);
   if (idx < 0) {
-    res.statusCode = 404;
-    return res.end(JSON.stringify('Not found'));
+    idx = sentences.length;
   }
   sentences[idx] = {
     id: id,

@@ -1,6 +1,6 @@
 <script>
   let menuActive = false;
-  function toggleMenu(event) {
+  function toggleMenu() {
     menuActive = !menuActive;
   }
 </script>
@@ -23,7 +23,7 @@
   <div class="navbar-menu" class:is-active="{menuActive}" id="navMenu">
     <div class="navbar-start">
       <a class="navbar-item" href="/sentences">Sätze</a>
-      <a class="navbar-item" href="/draw">Würfel</a>
+      <a class="navbar-item" href="/draw">Ziehen</a>
     </div>
   </div>
 </nav>

@@ -5,8 +5,7 @@
 
   export let get = async () => [];
   export let del = async () => {};
-  export let update = async () => {};
-  export let insert = async () => {};
+  export let put = async () => {};
   let newRow = {};
   export let fields = [
     {
@@ -41,15 +40,11 @@
   };
 
   const save = _.debounce(async (item) => {
-    if (item.id) {
-      await update(item);
-    } else {
-      item.id = await (await insert(item)).json();
-    }
+    await put(item);
   }, 300);
 
   const addRow = async () => {
-    newRow.id = await (await insert(newRow)).json();
+    newRow.id = await put(newRow);
     items = [Object.assign({}, newRow), ...items];
     newRow = {};
   };

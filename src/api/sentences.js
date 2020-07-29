@@ -1,14 +1,9 @@
-export async function insertSentence(sentence) {
-  return await fetch('api/sentences', {
-    method: 'post',
-    body: JSON.stringify(sentence),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-}
+import { v4 as uuidv4 } from 'uuid';
 
-export async function updateSentence(sentence) {
+export async function putSentence(sentence) {
+  if (!sentence.id) {
+    sentence.id = uuidv4();
+  }
   await fetch(`api/sentences/${sentence.id}`, {
     method: 'put',
     body: JSON.stringify(sentence),
@@ -24,4 +19,9 @@ export async function deleteSentence(id) {
 
 export async function getSentences() {
   return await (await fetch('api/sentences')).json();
+}
+
+export async function drawSentence(category) {
+  let qs = category ? '?category=' + encodeURIComponent(category) : '';
+  return await (await fetch('api/sentences/draw' + qs)).json();
 }

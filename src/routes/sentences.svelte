@@ -1,12 +1,7 @@
 <script>
   import DataTable from '../components/DataTable.svelte';
   import TagInput from '../components/TagInput.svelte';
-  import {
-    insertSentence,
-    getSentences,
-    updateSentence,
-    deleteSentence,
-  } from '../api';
+  import { getSentences, putSentence, deleteSentence } from '../api';
 
   let fields = [
     {
@@ -30,6 +25,5 @@
 <DataTable
   {fields}
   get="{getSentences}"
-  insert="{insertSentence}"
-  update="{updateSentence}"
+  put="{putSentence}"
   del="{deleteSentence}" />
