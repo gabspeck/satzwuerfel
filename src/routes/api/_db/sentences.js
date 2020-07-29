@@ -12,7 +12,7 @@ export let sentences = [
   {
     id: '9bb1f246-8633-4bff-a075-ba92f9a8fadc',
     text: 'Was sind Sie von Beruf?',
-    categories: 'A1,Antwort,Vorstellungsgespräch',
+    categories: 'A1,Frage,Vorstellungsgespräch',
   },
   {
     id: 'f2bc61f6-c8b5-44bd-b86e-78e463a8e03d',
