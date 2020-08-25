@@ -1,5 +1,5 @@
 <script>
-  import { _ } from 'lodash';
+  import debounce from 'lodash/debounce';
   import { onMount } from 'svelte';
   import DataTableInput from './DataTableInput.svelte';
 
@@ -39,7 +39,7 @@
     }
   };
 
-  const save = _.debounce(async (item) => {
+  const save = debounce(async (item) => {
     await put(item);
   }, 300);
 

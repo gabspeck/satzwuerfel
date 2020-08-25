@@ -1,7 +1,7 @@
 <script>
   import DataTable from '../components/DataTable.svelte';
   import TagInput from '../components/TagInput.svelte';
-  import { getSentences, putSentence, deleteSentence } from '../api';
+  import { deleteSentence, getSentences, putSentence } from '../api';
 
   let fields = [
     {

@@ -1,7 +1,7 @@
 <script>
   export let item;
   export let field;
-  export let onInput;
+  export let onInput = null;
 </script>
 
 {#if field.rendering && field.rendering.component}

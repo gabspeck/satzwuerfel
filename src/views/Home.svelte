@@ -1,3 +1,7 @@
+<script lang="ts">
+  import {user} from '../stores';
+</script>
+
 <svelte:head>
   <title>Satzwürfel</title>
 </svelte:head>

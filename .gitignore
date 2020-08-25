@@ -1,6 +1,6 @@
 /node_modules/
-/static/build/
-/static/webfonts/
+/public/build/
+/public/webfonts/
 
 .DS_Store
 ### Node template

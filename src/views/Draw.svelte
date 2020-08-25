@@ -1,18 +1,18 @@
 <script>
   import TagInput from '../components/TagInput.svelte';
   import { onMount } from 'svelte';
-  import { drawSentence } from '../api';
+  import { getCategories, drawSentence } from '../api';
 
   let categories = null;
   let sentence = null;
   let selectedTag = null;
 
   onMount(async () => {
-    categories = await (await fetch('/api/categories')).json();
+    categories = await getCategories();
   });
 
   const draw = async () => {
-    sentence = (await drawSentence(selectedTag)).text;
+    sentence = await drawSentence(selectedTag);
   };
 </script>
 
