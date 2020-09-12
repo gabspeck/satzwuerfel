@@ -14,10 +14,11 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build project
         run: yarn build
+        env:
+          FIREBASE_ENV: production          
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v1.5.0
         with:
           args: deploy --only hosting --project=satzwuerfel
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          FIREBASE_ENV: production
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}          
