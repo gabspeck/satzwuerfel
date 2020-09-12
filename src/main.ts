@@ -1,10 +1,11 @@
 import App from './App.svelte';
 import * as firebase from 'firebase/app';
+import * as firebaseConfig from './firebase-config'
 import 'firebase/auth';
-import firebaseConfig from './firebase-config';
 import { updateUser } from './auth';
 
-firebase.initializeApp(firebaseConfig);
+// @ts-ignore
+firebase.initializeApp(__app__.production ? firebaseConfig.production : firebaseConfig.dev);
 let app = null;
 const unsubscribe = firebase.auth().onAuthStateChanged(u => {
   unsubscribe();

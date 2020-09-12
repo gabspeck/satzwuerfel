@@ -1,8 +1,8 @@
-name: Deploy - Production
+name: Deploy - Development
 
 on:
   push:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
   build:
@@ -17,6 +17,6 @@ jobs:
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v1.5.0
         with:
-          args: deploy --only hosting --project=satzwuerfel
+          args: deploy --only hosting --project=satzwuerfel-dev
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
