@@ -5,7 +5,7 @@ import 'firebase/auth';
 import { updateUser } from './auth';
 
 // @ts-ignore
-firebase.initializeApp(__app__.production ? firebaseConfig.production : firebaseConfig.dev);
+firebase.initializeApp(firebaseConfig[__app__.firebaseEnv]);
 let app = null;
 const unsubscribe = firebase.auth().onAuthStateChanged(u => {
   unsubscribe();

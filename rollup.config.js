@@ -47,7 +47,7 @@ export default {
   plugins: [
     replace({
       __app__: JSON.stringify({
-        production,
+        firebaseEnv: process.env.FIREBASE_ENV || 'dev',
       }),
     }),
     css({ output: 'public/build/vendor.css' }),
