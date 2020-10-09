@@ -1,6 +1,7 @@
 import { wrap } from 'svelte-spa-router';
 import { requireLogin } from './auth';
 
+import Autocomplete from './views/Autocomplete.svelte'
 import Home from './views/Home.svelte';
 import Draw from './views/Draw.svelte';
 import Login from './views/Login.svelte';
@@ -12,5 +13,6 @@ export const routes = {
   '/login': Login,
   '/draw': wrap(Draw, requireLogin),
   '/sentences': wrap(Sentences, requireLogin),
+  '/autocomplete': wrap(Autocomplete, requireLogin),
   '*': NotFound
 };
