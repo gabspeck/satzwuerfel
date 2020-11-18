@@ -657,6 +657,11 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
+"@types/fold-to-ascii@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/fold-to-ascii/-/fold-to-ascii-5.0.0.tgz#df5c9d420552f001a9bb4803c6afb0252e8514e1"
+  integrity sha512-zaaLJcf8jPuVVYl6v+mSMaOMJNgkrDsYweu7Oa5RODIKgX9+Yu6Ng6/IY9zylwIurt0iQiDM0SN8agCOhLrKUA==
+
 "@types/http-assert@*":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@types/http-assert/-/http-assert-1.5.1.tgz#d775e93630c2469c2f980fc27e3143240335db3b"
