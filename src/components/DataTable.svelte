@@ -59,7 +59,7 @@
     {#each fields as field}
       <div class="field column">
         <p class="control is-expanded">
-          <DataTableInput item="{newRow}" {field} />
+          <DataTableInput item="{newRow}" field="{field}" />
         </p>
       </div>
     {/each}
@@ -107,7 +107,10 @@
           <tr>
             {#each fields as field}
               <td>
-                <DataTableInput onInput="{() => save(item)}" {item} {field} />
+                <DataTableInput
+                  onInput="{() => save(item)}"
+                  item="{item}"
+                  field="{field}" />
               </td>
             {/each}
             <td>

@@ -23,7 +23,7 @@
 </svelte:head>
 <h1 class="title">Sätze</h1>
 <DataTable
-  {fields}
+  fields="{fields}"
   get="{getSentences}"
   put="{putSentence}"
   del="{deleteSentence}" />

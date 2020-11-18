@@ -8,7 +8,7 @@
   let selectedTag = null;
 
   onMount(async () => {
-    categories = await getCategories();
+    categories = (await getCategories()).map(c => c.id);
   });
 
   const draw = async () => {
@@ -32,9 +32,7 @@
         selectedTag = e.detail;
       }}" />
     <button class="button is-large" on:click="{draw}">
-      <span class="icon">
-        <i class="fas fa-dice"></i>
-      </span>
+      <span class="icon"> <i class="fas fa-dice"></i> </span>
       <span>Satz Ziehen</span>
     </button>
     {#if sentence}

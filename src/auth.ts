@@ -9,12 +9,12 @@ user.subscribe((v) => {
   user_value = v;
 });
 
-export const updateUser = (u => {
+export const updateUser = (u) => {
   user.set(u);
-  if (!u){
+  if (!u) {
     login();
   }
-});
+};
 
 export const requireLogin = (): boolean => {
   return !!user_value;
