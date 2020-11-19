@@ -13,26 +13,32 @@ export async function putSentence(sentence) {
     sentenceCategories.map(async (c) => await categories.addCategory(c))
   );
   const doc = sentence.id ? collection.doc(sentence.id) : collection.doc();
-  const current = (await doc.get()).data()
+  const current = (await doc.get()).data();
   await doc.set({ ...sentence, categories: categoryIds });
   if (current) {
-    const deletedCategories = current.categories.filter(c => !sentence.categories.includes(c))
-    for (const category of deletedCategories){
-      await deleteCategoryIfUnused(category)
+    const deletedCategories = current.categories.filter(c => !sentence.categories.includes(c));
+    for (const category of deletedCategories) {
+      await deleteCategoryIfUnused(category);
     }
   }
   return doc.id;
 }
 
 export async function deleteSentence(id) {
-  await getSentencesCollection().doc(id).delete();
+  const doc = getSentencesCollection().doc(id);
+  const sentence = await doc.get();
+  const categories = sentence.data().categories;
+  await doc.delete();
+  for (const category of categories) {
+    await deleteCategoryIfUnused(category);
+  }
 }
 
 export async function getSentences(): Promise<Array<any>> {
   const collection = getSentencesCollection();
   return (await collection.get()).docs.map((doc) => ({
     ...doc.data(),
-    id: doc.id,
+    id: doc.id
   }));
 }
 
@@ -40,8 +46,8 @@ export async function drawSentence(category) {
   const collection = getSentencesCollection();
   const candidates = (
     await (category
-      ? collection.where('categories', 'array-contains', category)
-      : collection
+        ? collection.where('categories', 'array-contains', category)
+        : collection
     ).get()
   ).docs.map((s) => s.data().text);
 
