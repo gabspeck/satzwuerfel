@@ -1,7 +1,7 @@
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/auth';
 import { user } from './stores';
-import { push, replace } from 'svelte-spa-router';
+import { push } from 'svelte-spa-router';
 
 let user_value;
 

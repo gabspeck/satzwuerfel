@@ -1,20 +1,23 @@
 <script>
   import DataTable from '../components/DataTable.svelte';
   import TagInput from '../components/TagInput.svelte';
-  import { deleteSentence, getSentences, putSentence } from '../api';
+  import { deleteSentence, getCategories, getSentences, putSentence } from '../api';
 
   let fields = [
     {
       name: 'text',
-      label: 'Satz',
+      label: 'Satz'
     },
     {
       name: 'categories',
       label: 'Kategorien',
       rendering: {
         component: TagInput,
-      },
-    },
+        props: {
+          source: getCategories
+        }
+      }
+    }
   ];
 </script>
 

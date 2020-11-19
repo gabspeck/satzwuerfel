@@ -1,6 +1,6 @@
 <script>
   import 'firebaseui/dist/firebaseui.css';
-  import * as firebase from 'firebase/app';
+  import firebase from 'firebase/app';
   import * as firebaseui from 'firebaseui';
   import { onMount } from 'svelte';
   import { replace } from 'svelte-spa-router';

@@ -1,5 +1,6 @@
 import * as collections from './collections';
 import * as categories from './categories';
+import { deleteCategoryIfUnused } from './categories';
 
 export function getSentencesCollection() {
   return collections.getUserCollection('sentences');
@@ -7,12 +8,19 @@ export function getSentencesCollection() {
 
 export async function putSentence(sentence) {
   const collection = getSentencesCollection();
-  const sentenceCategories = sentence.categories.split(',');
+  const sentenceCategories = sentence.categories ? sentence.categories.split(',') : [];
   const categoryIds = await Promise.all(
     sentenceCategories.map(async (c) => await categories.addCategory(c))
   );
   const doc = sentence.id ? collection.doc(sentence.id) : collection.doc();
+  const current = (await doc.get()).data()
   await doc.set({ ...sentence, categories: categoryIds });
+  if (current) {
+    const deletedCategories = current.categories.filter(c => !sentence.categories.includes(c))
+    for (const category of deletedCategories){
+      await deleteCategoryIfUnused(category)
+    }
+  }
   return doc.id;
 }
 
@@ -36,8 +44,6 @@ export async function drawSentence(category) {
       : collection
     ).get()
   ).docs.map((s) => s.data().text);
-
-  console.log(candidates);
 
   return candidates[Math.floor(Math.random() * candidates.length)];
 }

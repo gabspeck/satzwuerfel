@@ -9,9 +9,6 @@ module.exports = {
     '@snowpack/plugin-dotenv',
     '@snowpack/plugin-typescript',
   ],
-  install: [
-    /* ... */
-  ],
   installOptions: {
     /* ... */
   },
@@ -25,6 +22,5 @@ module.exports = {
     /* ... */
   },
   alias: {
-    /* ... */
   },
 };

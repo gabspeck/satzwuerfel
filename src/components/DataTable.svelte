@@ -75,7 +75,7 @@
   </div>
 </div>
 
-<div class="table-container">
+<div class="table-container" style="height: 100%">
   <table class="table is-fullwidth" style="table-layout: fixed;">
     <thead>
       <tr>
