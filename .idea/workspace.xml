@@ -32,7 +32,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f854d25a-7c52-4982-aae5-221094e47aa7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/sentences.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/sentences.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snowpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/snowpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +50,11 @@
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
   </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="gabspeck" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="satzwuerfel" />
+  </component>
   <component name="ProjectId" id="1kRiADeogO1xQ6Rf2X9Vfm0HvV0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -58,9 +65,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettier.files.pattern" value="{**/*,*}.{js,ts,jsx,tsx,ts,svelte}" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="run.prettier.on.save" value="true" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="ts.external.directory.path" value="C:\Users\Gabriel\projetos\satzwuerfel\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -107,7 +122,8 @@
       <option name="presentableId" value="Default" />
       <updated>1605669659327</updated>
       <workItem from="1605669660493" duration="2537000" />
-      <workItem from="1605737144935" duration="21558000" />
+      <workItem from="1605737144935" duration="22072000" />
+      <workItem from="1605821254232" duration="10812000" />
     </task>
     <task id="LOCAL-00001" summary="feat: autocomplete categories">
       <created>1605760084923</created>
@@ -116,7 +132,21 @@
       <option name="project" value="LOCAL" />
       <updated>1605760084923</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix: delete unused categories on sentence delete">
+      <created>1605760805772</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605760805772</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: migrate sentence categories to collection">
+      <created>1605831365187</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605831365187</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,55 +162,54 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: autocomplete categories" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: autocomplete categories" />
+    <MESSAGE value="fix: delete unused categories on sentence delete" />
+    <MESSAGE value="feat: migrate sentence categories to collection" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: migrate sentence categories to collection" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1234" height="440" key="GridCell.Tab.0.bottom" timestamp="1605758801456">
+    <state x="1684" y="390" key="Github.CreatePullRequestDialog" timestamp="1605831404143">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="1234" height="440" key="GridCell.Tab.0.bottom/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605758801456" />
-    <state width="1234" height="440" key="GridCell.Tab.0.center" timestamp="1605758801456">
+    <state x="1684" y="390" key="Github.CreatePullRequestDialog/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605831404143" />
+    <state width="1236" height="440" key="GridCell.Tab.0.bottom" timestamp="1605824165124">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="1234" height="440" key="GridCell.Tab.0.center/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605758801456" />
-    <state width="1234" height="440" key="GridCell.Tab.0.left" timestamp="1605758801456">
+    <state width="1236" height="440" key="GridCell.Tab.0.bottom/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605824165124" />
+    <state width="1236" height="440" key="GridCell.Tab.0.center" timestamp="1605824165123">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="1234" height="440" key="GridCell.Tab.0.left/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605758801456" />
-    <state width="1234" height="440" key="GridCell.Tab.0.right" timestamp="1605758801456">
+    <state width="1236" height="440" key="GridCell.Tab.0.center/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605824165123" />
+    <state width="1236" height="440" key="GridCell.Tab.0.left" timestamp="1605824165123">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="1234" height="440" key="GridCell.Tab.0.right/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605758801456" />
-    <state x="1421" y="168" key="SettingsEditor" timestamp="1605759857808">
+    <state width="1236" height="440" key="GridCell.Tab.0.left/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605824165123" />
+    <state width="1236" height="440" key="GridCell.Tab.0.right" timestamp="1605824165123">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1421" y="168" key="SettingsEditor/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605759857808" />
-    <state x="872" y="252" key="Vcs.Push.Dialog.v2" timestamp="1605760086984">
+    <state width="1236" height="440" key="GridCell.Tab.0.right/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605824165123" />
+    <state x="1421" y="168" key="SettingsEditor" timestamp="1605831295680">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="872" y="252" key="Vcs.Push.Dialog.v2/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605760086984" />
+    <state x="1421" y="168" key="SettingsEditor/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605831295680" />
+    <state x="1641" y="268" width="540" height="524" key="StructurePopup" timestamp="1605827254856">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1641" y="268" width="540" height="524" key="StructurePopup/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605827254856" />
+    <state x="872" y="252" key="Vcs.Push.Dialog.v2" timestamp="1605831370455">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="872" y="252" key="Vcs.Push.Dialog.v2/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605831370455" />
     <state x="1626" y="256" width="587" height="534" key="find.popup" timestamp="1605759334858">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1626" y="256" width="587" height="534" key="find.popup/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605759334858" />
-    <state x="1583" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1605759650820">
+    <state x="1583" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1605832422871">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1583" y="229" width="672" height="678" key="search.everywhere.popup/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605759650820" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/snowpack.config.js</url>
-          <line>6</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="1583" y="229" width="672" height="678" key="search.everywhere.popup/2560.0.1366.728/0.0.2560.1040@0.0.2560.1040" timestamp="1605832422871" />
   </component>
 </project>
