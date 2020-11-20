@@ -1,19 +1,27 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import { user } from '../stores';
+import { getUser } from '../auth';
 import CollectionReference = firebase.firestore.CollectionReference;
+import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 
-let _user;
+function getUserCollectionPath(path: string = '') {
+  return `users/${getUser().uid}/${path}`;
+}
 
-user.subscribe((u) => {
-  _user = u;
-});
+export function getDb() {
+  return firebase.firestore();
+}
 
-function getUserCollectionPath(path: string) {
-  return `users/${_user.uid}/${path}`;
+export async function getUserDocument(): Promise<DocumentSnapshot> {
+  const ref = getDb().doc(getUserCollectionPath());
+  return await ref.get();
+}
+
+export async function saveUserDocument(snapshot: DocumentSnapshot, data: any) {
+  const method = snapshot.exists ? 'update' : 'set';
+  await getDb().doc(getUserCollectionPath())[method](data);
 }
 
 export function getUserCollection(path: string): CollectionReference {
-  const db = firebase.firestore();
-  return db.collection(getUserCollectionPath(path));
+  return getDb().collection(getUserCollectionPath(path));
 }
