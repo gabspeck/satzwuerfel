@@ -1,6 +1,5 @@
 <script lang="ts">
-
-  import {user} from '../stores';
+  import { user } from '../stores';
   import * as auth from '../auth';
 
   let menuActive = false;
@@ -8,7 +7,7 @@
     menuActive = !menuActive;
   };
   const toggleAuth = () => {
-    if ($user){
+    if ($user) {
       auth.logout();
     } else {
       auth.login();
