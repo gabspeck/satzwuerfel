@@ -2,6 +2,6 @@
 build
 web_modules
 node_modules
-/yarn-error.log
 /.firebase/
 /.idea/workspace.xml
+*.log
