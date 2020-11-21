@@ -27,6 +27,7 @@
     "@types/fold-to-ascii": "^5.0.0",
     "@types/snowpack-env": "^2.3.2",
     "@web/test-runner": "^0.9.7",
+    "@web/test-runner-playwright": "^0.6.6",
     "chai": "^4.2.0",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
